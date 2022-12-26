@@ -6,7 +6,7 @@ function sendData(joyDir, button){
         buttonValue = button.value;
         var data = '"' + joyDir + ";" + buttonValue + '"';
         console.log(data);
-        fetch("https://cors-anywhere.herokuapp.com/http://192.168.0.245", { method: "post", body: data })
+        fetch("http://192.168.0.245", { method: "post", body: data })
         .then((data) => {
             console.log(data);
             button.value = false; //Only when the request went trough, attack is disabled 
