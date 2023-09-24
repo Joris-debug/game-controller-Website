@@ -1,0 +1,48 @@
+body{
+    background-color: rgb(177, 206, 177);
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+#joystickDiv{
+    width:200px;
+    height:200px;
+}
+
+#joystick {
+}
+
+.controllerDiv{
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.button {
+    border: 2px solid black;
+    width:120px;
+    height:120px;
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 35px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #018f01;
+    border-radius: 200%;
+    box-shadow: 0 9px #999;
+}
+  
+.button:hover {background-color: #297929}
+  
+.button:active {
+    background-color: #297929;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}

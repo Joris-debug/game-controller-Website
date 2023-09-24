@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Controller</title>
+        <script src="scripts.js"></script>
+        <script src="joy.js"></script>
+        <link rel="stylesheet" href="stylesheet.css">
+    </head>
+    <body>
+        <div class="controllerDiv">
+            <div id="joystickDiv"></div>
+            <button class="button" id="attack" onclick=handleClick() value=false>🗡️</button>
+        </div>
+    <script type="text/javascript">
+        // Create JoyStick object into the DIV 'joystickDiv'
+        var joystick = new JoyStick('joystickDiv');
+        function handleClick(){
+            document.getElementById("attack").value = true;
+        }
+        var requestPending = false; //No request is currently pending
+
+function sendData(joyDir, button){
+    if(!requestPending){ //If there is no pending request
+        requestPending = true;
+        buttonValue = button.value;
+        var data = '"' + joyDir + ";" + buttonValue + '"';
+        console.log(data);
+        fetch(SERVER-IP, { method: "post", body: data })
+        .then((data) => {
+            console.log(data);
+            button.value = false; //Only when the request went trough, attack is disabled 
+            requestPending = false;
+        }).catch(err => console.error(err), requestPending = false);
+    }        
+}
+        setInterval(() => {sendData(joystick.GetDir(), document.getElementById("attack"))}, 500);
+        
+    </script>
+    </body>
+</html>
